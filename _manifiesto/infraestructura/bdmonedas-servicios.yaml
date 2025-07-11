@@ -3,9 +3,9 @@ kind: Service
 metadata:
  name: bdmonedas-servicio
 spec:
- selector: 
-  app: bdmonedas
- ports:
-  - port: 5432
-    targetPort: 5432
- type: ClusterIP
+  selector: 
+    app: bdmonedas
+  ports:
+    - port: 5432
+      targetPort: 5432
+  type: ClusterIP
