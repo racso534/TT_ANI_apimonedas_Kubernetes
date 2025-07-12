@@ -28,13 +28,13 @@ spec:
 
             PGPASSWORD="${PGPASSWORD}" psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME_POSTGRES" -c '\q' &>/dev/null
           
-            if[ $? -eq 0 ]; then
+            if [ $? -eq 0 ]; then
               break
             fi
 
             sleep $RETRY_INTERVAL
 
-            if[ $? -eq $MAX_RETRIES ]; then
+            if [ $i -eq $MAX_RETRIES ]; then
               exit 1
             fi
           done
@@ -46,13 +46,13 @@ spec:
 
             PGPASSWORD="${PGPASSWORD}" psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME_MONEDAS" -c '\q' &>/dev/null
           
-            if[ $? -eq 0 ]; then
+            if [ $? -eq 0 ]; then
               break
             fi
 
             sleep $RETRY_INTERVAL
 
-            if[ $? -eq $MAX_RETRIES ]; then
+            if [ $i -eq $MAX_RETRIES ]; then
               exit 1
             fi
           done
@@ -67,7 +67,8 @@ spec:
               key: BDMONEDAS_PASSWORD
         volumeMounts:
         - name: scripts
-          mountPath: /scripts/
+          mountPath: /scripts
       volumes:
         - name: scripts
-          configMap: bdmonedas-cm-iniciar
+          configMap: 
+            name: bdmonedas-cm-iniciar
