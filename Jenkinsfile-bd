@@ -11,7 +11,7 @@ pipeline {
                 script {
                     bat """
                     kubectl delete statefulset bdmonedas-sfs --ignore-not-found
-                    kubectl delete pvc storage-bdmonedas-bdmonedas-sfs-tt-0 --ignore-not-found
+                    kubectl delete pvc storage-bdmonedas-bdmonedas-sfs-0 --ignore-not-found
                     """
                 }
             }
@@ -36,6 +36,20 @@ pipeline {
                 }
             }
         }
+
+        stage('Ejecutar scripts iniciales') {
+            steps {
+                script {
+                    bat """
+                    kubectl delete job iniciar-bdmonedas-tt --ignore-not-found
+                    kubectl apply -f _manifiestos\\infraestructura\\jobs\\iniciar-bdmonedas.yaml
+                    kubectl wait --for=condition=complete job/iniciar-bdmonedas-tt --timeout=600s
+
+                    kubectl logs job/iniciar-bdmonedas                
+                    """
+                }
+            }
+        }        
     }
 
     post {
