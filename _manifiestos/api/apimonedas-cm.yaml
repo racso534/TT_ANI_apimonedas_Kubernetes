@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apimonedas-cm
+data:
+  URL_BD_MONEDAS: jdbc:postgresql://bdmonedas-servicio:5432/monedas
+  USER_BD_MONEDAS: postgres
