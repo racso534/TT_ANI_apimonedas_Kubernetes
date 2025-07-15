@@ -17,7 +17,7 @@ spec:
             apt-get update && apt-get install -y postgresql-client psmisc && rm -rf /var/lib/apt/lists/*
             sleep 5
 
-            DB_HOST="servicio-bdmonedas"
+            DB_HOST="bdmonedas-servicio"
             DB_USER="postgres"
             DB_NAME_POSTGRES="postgres"
             DB_NAME_MONEDAS="monedas"

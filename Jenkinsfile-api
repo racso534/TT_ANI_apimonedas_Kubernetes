@@ -30,11 +30,12 @@ pipeline{
 
         stage('Registrar imagen') {
             steps{                
-                withCredentials([userNamePassword(credentialsId: '200', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')])
-                bat """
-                    docker push ${DOCKER_IMAGE}
-                    docker logout
-                """
+                withCredentials([userNamePassword(credentialsId: '200', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    bat """
+                        docker push ${DOCKER_IMAGE}
+                        docker logout
+                    """
+                }               
             }
         }
 
