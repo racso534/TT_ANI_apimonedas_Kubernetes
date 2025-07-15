@@ -21,4 +21,4 @@ spec:
             - configMapRef:
                 name: apimonedas-cm
             - secretRef:
-              name: bdmonedas-secretos
+                name: bdmonedas-secretos
