@@ -51,7 +51,7 @@ pipeline{
             steps{
                 script {
                     bat """
-                        kubectl set image deployment/apimonedas-deployment ${DOCKER_IMAGE} --record
+                        kubectl set image deployment/apimonedas-deployment ${DOCKER_IMAGE}
                         kubectl rollout status deployment/apimonedas-deployment
                     """
                 }                
