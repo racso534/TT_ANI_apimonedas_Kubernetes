@@ -13,8 +13,8 @@ spec:
         app: apimonedas
     spec:
       containers:
-        - name: apimonedas
-          image: racso534/apimonedas:latest
+        - name: apimonedas-c
+          image: racso534/apimonedas-v1:latest
           ports:
             - containerPort: 8080
           envFrom:
