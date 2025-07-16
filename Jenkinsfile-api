@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        DOCKER_IMAGE = 'racso534/apimonedas-v1:latest'
+        DOCKER_IMAGE = 'racso534/apimonedas-v1:1.0'
         KUBECONFIG = credentials('300')
     }
 
