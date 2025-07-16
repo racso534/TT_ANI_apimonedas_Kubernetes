@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        DOCKER_IMAGE = 'racso534/apimonedas-v1'
+        DOCKER_IMAGE = 'racso534/apimonedas-v1:latest'
         KUBECONFIG = credentials('300')
     }
 
@@ -51,7 +51,7 @@ pipeline{
             steps{
                 script {
                     bat """
-                        kubectl set image deployment/apimonedas-deployment ${DOCKER_IMAGE}
+                        kubectl set image deployment/apimonedas-deployment apimonedas-c=${DOCKER_IMAGE}
                         kubectl rollout status deployment/apimonedas-deployment
                     """
                 }                
