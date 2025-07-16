@@ -53,6 +53,8 @@ pipeline{
                     bat """
                         kubectl set image deployment/apimonedas-deployment apimonedas-c=${DOCKER_IMAGE}
                         kubectl rollout status deployment/apimonedas-deployment
+
+                        kubectl logs deployment/apimonedas-deployment
                     """
                 }                
             }
